@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class player1movement : MonoBehaviour
-{
+public class player1movement : MonoBehaviour{
     public float playermov;
     public float m_Thrust = 2f;
     Rigidbody2D m_Rigidbody;
@@ -36,15 +35,15 @@ public class player1movement : MonoBehaviour
             playermov = playermov*0.5f;
         }
     }
-      public void CheckIfGrounded()
+    public void CheckIfGrounded()
     {
             isGrounded = Physics2D.OverlapCircle(GroundCheck.position, GroundCheck.GetComponent<CircleCollider2D>().radius, GroundLayer);
     }
-      public void CheckIfHitWall()
+    public void CheckIfHitWall()
     {
             HitWall = Physics2D.OverlapCircle(GroundCheck.position, GroundCheck.GetComponent<CircleCollider2D>().radius, GroundLayer);
     }
-    
+
     void OnTriggerStay2D(Collider2D col)
     {
         if(col.tag == "GroundLayer"){
@@ -52,31 +51,29 @@ public class player1movement : MonoBehaviour
             Debug.Log("Print: " + col);  
         }
     }
-     void OnTriggerExit2D(Collider2D col)
+    void OnTriggerExit2D(Collider2D col)
     {
         isGrounded=false;
 
     }
-    
-    
-    /*public void Jump()
-    {
-        
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CheckIfGrounded();
-            if (jumpsLeft > 0)
-            {
-                m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, jumpForce);
-                jumpsLeft--;
-            }
-                               
-        }
-        
-        
-    }*/
 }
 
+/*public void Jump()
+{
+    
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        CheckIfGrounded();
+        if (jumpsLeft > 0)
+        {
+            m_Rigidbody.velocity = new Vector2(m_Rigidbody.velocity.x, jumpForce);
+            jumpsLeft--;
+        }
+                           
+    }
+    
+    
+}*/
 
 
 
@@ -86,22 +83,23 @@ using UnityEngine;
 
 public class player1movement : MonoBehaviour
 {
-    Rigidbody2D m_Rigidbody;
-    public float m_Thrust = 4000f;
+Rigidbody2D m_Rigidbody;
+public float m_Thrust = 4000f;
 
-    void Start()
-    {
-        //Fetch the Rigidbody from the GameObject with this script attached
-        m_Rigidbody = GetComponent<Rigidbody2D>();
-    }
+void Start()
+{
+    //Fetch the Rigidbody from the GameObject with this script attached
+    m_Rigidbody = GetComponent<Rigidbody2D>();
+}
 
-    void FixedUpdate()
+void FixedUpdate()
+{
+    if (Input.GetButton("Jump"))
     {
-        if (Input.GetButton("Jump"))
-        {
-            //Apply a force to this Rigidbody in direction of this GameObjects up axis
-            m_Rigidbody.AddForce(transform.up * m_Thrust);
-        }
+        //Apply a force to this Rigidbody in direction of this GameObjects up axis
+        m_Rigidbody.AddForce(transform.up * m_Thrust);
     }
+}
+
 }
 */
