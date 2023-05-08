@@ -28,7 +28,7 @@ public class player1movement : MonoBehaviour{
         float hz = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right*hz*playermov*Time.deltaTime);  
 
-        if (Input.GetButton("Jump") && isGrounded == true){
+        if (Input.GetButtonDown("Jump") && isGrounded == true){
             m_Rigidbody.AddForce(transform.up * m_Thrust);
         }
         if (Input.GetButton("Horizontal") && HitWall == true){
